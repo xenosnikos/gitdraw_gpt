@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Architectural Diagram for {{ repo.name }}</h2>
+  <pre>{{ diagram }}</pre>
+  <a href="{% url 'dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+{% endblock %}

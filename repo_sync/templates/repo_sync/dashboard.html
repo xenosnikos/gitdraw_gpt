@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Dashboard</h2>
+  <a href="{% url 'add_repository' %}" class="btn btn-primary">Add Repository</a>
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for repo in repositories %}
+        <tr>
+          <td>{{ repo.name }}</td>
+          <td>{{ repo.url }}</td>
+          <td>
+            <a href="{% url 'sync_repo' repo.id %}" class="btn btn-info">Sync</a>
+            <a href="{% url 'generate_diagram' repo.id %}" class="btn btn-success">Generate Diagram</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">No repositories added.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

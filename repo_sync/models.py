@@ -12,7 +12,7 @@ class Repository(models.Model):
         return self.name
 
 class File(models.Model):
-    repository = models.ForeignKey(Repository, on_delete=models.CASCADE, related_name='files') # Add related_name argument
+    repository = models.ForeignKey(Repository, on_delete=models.CASCADE, related_name='files')
     name = models.CharField(max_length=100)
     path = models.CharField(max_length=255)
 

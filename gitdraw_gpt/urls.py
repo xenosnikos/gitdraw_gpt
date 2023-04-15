@@ -23,7 +23,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('', include('repo_sync.urls')),  # Add this line to include repo_sync app's URLs
     path("admin/", admin.site.urls),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='repo_sync/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout')
 ]
 

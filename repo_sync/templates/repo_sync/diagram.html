@@ -1,7 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'repo_sync/base.html' %}
 
 {% block content %}
-  <h2>Architectural Diagram for {{ repo.name }}</h2>
-  <pre>{{ diagram }}</pre>
-  <a href="{% url 'dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+  <h2>{{ repository.name }} - Diagram</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Generate Diagram</button>
+  </form>
+  <br>
+  <div>
+    {{ diagram_svg|safe }}
+  </div>
 {% endblock %}
+The diagram_svg|safe line outputs the raw SVG code in the template, rendering the diagram on the page.
+
+
+
+
+

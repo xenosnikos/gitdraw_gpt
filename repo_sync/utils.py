@@ -3,8 +3,8 @@ import git
 import openai
 
 from django.conf import settings
-
-
+from dotenv import load_dotenv
+load_dotenv()
 def get_repo_directory(user, repo_name):
     return os.path.join(settings.BASE_DIR, f'repositories/{user}/{repo_name}')
 
@@ -35,10 +35,9 @@ def sync_repository(user, repo_url, repo_name):
 
 
 def generate_architectural_diagrams(user, repo_name, prompt):
-    api_key = "your_openai_api_key_here"
-    openai.api_key = api_key
+    openai.api_key = os.environ.get('OPENAI_API_KEY')
 
-    model_engine = "gpt-35-turbo"
+    model_engine = "gpt-3.5-turbo"
 
     repo_directory = get_repo_directory(user, repo_name)
     code_content = ""
